@@ -31,15 +31,23 @@
                 });
             },
             done: function (e, data) {
-                var imageUrl = data.result;
+                // delete the upload handler
                 $uploadImageButton.unbind();
+                var imageUrl = data.result;
+                // main image
                 var $image = $('<img />');
                 $image.prop('src', imageUrl);
                 $currentImage.empty();
                 $currentImage.append($image);
+                // thumbnail image
                 var $thumbnailImage = $('<img />');
                 $thumbnailImage.prop('src', imageUrl + '?width=' + IMAGE_WIDTH + '&height=' + IMAGE_HEIGHT + '&mode=' + IMAGE_MODE);
+                $thumbnailImage.click(function () {
+                    $currentImage.empty();
+                    $currentImage.append($image);
+                });
                 $allImages.append($thumbnailImage);
+                // show user that the upload has finished
                 $uploadImageInfo.text('Upload finished.');
             }
         });
