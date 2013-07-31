@@ -7,12 +7,6 @@ namespace TestWebApp.Infrastructure.Backend
   public class FileSystemStorageManager : IStorageManager
   {
     private const string _serverFolder = @"~/Uploads/";
-    private readonly IDataBaseManager _dbManager;
-
-    public FileSystemStorageManager(IDataBaseManager dbManager)
-    {
-      _dbManager = dbManager;
-    }
 
     public string Save(HttpPostedFileBase file)
     {
@@ -22,13 +16,12 @@ namespace TestWebApp.Infrastructure.Backend
       var fileId =  newFolder + "/" + fileName;
       var serverFilePath = HttpContext.Current.Server.MapPath(_serverFolder + fileId);
       file.SaveAs(serverFilePath);
-      // TODO: save info to db as well
       return fileId;
     }
 
-    public string GetFileUrl(string relativeFilePath)
+    public string GetRelativeFileUrl(string fileId)
     {
-      var result = "";
+      var result = _serverFolder + fileId;
       return result;
     }
   }

@@ -5,6 +5,6 @@ namespace TestWebApp.Infrastructure.Backend
   public interface IStorageManager
   {
     string Save(HttpPostedFileBase file);
-    string GetFileUrl(string relativeFilePath);
+    string GetRelativeFileUrl(string fileId);
   }
 }

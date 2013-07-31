@@ -13,6 +13,7 @@ namespace TestWebApp
         new StyleBundle("~/css/bootstrap")
           .Include("~/content/bootstrap.css")
           .Include("~/content/bootstrap.min.css")
+          .Include("~/content/bootstrap-override.css")
         );
       bundles.Add(
         new ScriptBundle("~/scripts/jquery")
