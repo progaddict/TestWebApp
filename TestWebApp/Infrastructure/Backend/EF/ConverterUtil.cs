@@ -7,7 +7,7 @@ namespace TestWebApp.Infrastructure.Backend.EF
   {
     public static ViewModels.Image ToModel(this Image entity)
     {
-      var model = new ViewModels.Image { ImagePath = entity.ImageId };
+      var model = new ViewModels.Image { ImageRelativePath = entity.ImageRelativePath };
       return model;
     }
   }

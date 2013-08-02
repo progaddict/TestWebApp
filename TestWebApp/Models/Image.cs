@@ -2,6 +2,6 @@
 {
   public class Image : BaseModel
   {
-    public string ImagePath { set; get; }
+    public string ImageRelativePath { set; get; }
   }
 }

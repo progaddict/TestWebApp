@@ -9,6 +9,8 @@
     }
 }(function ($) {
     $(function () {
+        var SITE_BASE_URL = '/test-web-app/';
+
         var IMAGE_WIDTH = 100;
         var IMAGE_HEIGHT = 100;
         var IMAGE_MODE = 'max';
@@ -35,6 +37,15 @@
             $allImages.append($thumbnailImage);
         };
 
+        // load and show all images
+        $.ajax(SITE_BASE_URL + 'Home/GetAllImages', {
+            type: "POST"
+        }).done(function (data) {
+            $(data).each(function (index, element) {
+                addImage(element.ImageUrl);
+            });
+        });
+
         $uploadImageInput.fileupload({
             dataType: 'json',
             add: function (e, data) {
@@ -49,7 +60,7 @@
             done: function (e, data) {
                 // delete the upload handler
                 $uploadImageButton.unbind();
-                var imageUrl = data.result;
+                var imageUrl = data.result.ImageUrl;
                 addImage(imageUrl);
                 // show user that the upload has finished
                 $uploadImageInfo.text('Upload finished.');

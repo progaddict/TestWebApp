@@ -20,7 +20,7 @@ namespace TestWebApp.Infrastructure.Backend.EF
     {
       using (var db = new TestWebAppDbContext())
       {
-        var image = new Entities.Image { ImageId = imageId, Description = description };
+        var image = new Entities.Image { ImageRelativePath = imageId, Description = description };
         db.Images.Add(image);
         db.SaveChanges();
       }

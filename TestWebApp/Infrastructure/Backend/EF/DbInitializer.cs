@@ -8,7 +8,7 @@ namespace TestWebApp.Infrastructure.Backend.EF
     protected override void Seed(TestWebAppDbContext context)
     {
       base.Seed(context);
-      var image = new Image { ImageId = "wave.jpg", Description = "A waive." };
+      var image = new Image { ImageRelativePath = "wave.jpg", Description = "A waive." };
       context.Images.Add(image);
       context.SaveChanges();
     }
